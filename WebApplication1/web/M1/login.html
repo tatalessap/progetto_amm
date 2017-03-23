@@ -6,11 +6,46 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>loginNerdBook</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Marta Pibiri">
+        <meta name="keywords" content="login loginnerd loginnuovo registrazione">
     </head>
     <body>
-        <div>TODO write content</div>
+        <header>
+            <!--titolo principale-->
+            <div id="titleLogin">
+                <h1>Login-NerdBook</h1>
+                <div id="collegamentiesterni1">
+                    <nav>
+                        <ul>
+                            <li><a href="bacheca.html">Bacheca Personale</a></li>
+                            <li><a href="descrizione.html">Login</a></li>
+                            <li><a href="profilo.html">Profilo Personale</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="iscrizioneLogin">
+            <div id="DescrizioneLogin">
+                <h2>Per poter effuttuare l'accesso o registrarti, inserisci i seguenti dati:</h2>
+                <div id="InserisciDati">
+                    <form action="login.asp" method ="get">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username"
+                               id="username" value="inserisci il tuo username" />
+                        <br />
+                        <label for="password">Password:</label>
+                        <input type="text" name="password"
+                               id="password" value="inserisci password" />
+                        <br />
+                        <input type="submit" value="Conferma"/>
+                        <input type="reset" value="Reset"/>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

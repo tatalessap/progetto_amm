@@ -6,11 +6,71 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Bacheca-NerdBook</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Marta Pibiri">
+        <meta name="keywords" content="bachecaNerdbook">
     </head>
+    
     <body>
-        <div>TODO write content</div>
+        <header>
+            <div id="titleBacheca">               
+                <h1>Bacheca-NerdBook</h1>
+            </div>
+        </header>
+        
+        <div id="bacheca">
+            <div id="collegamentiesterni2">
+                    <nav>
+                        <ul>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="descrizione.html">Descrizione</a></li>
+                        </ul>
+                    </nav>
+            </div>
+            
+            <!--Esempi-->
+            <div id="posts">
+                
+                 <!--primo post senza allegati-->
+                 <div id="post1">
+                     <div id="profiloMark_1">
+                        <img title="profiloMark" alt="FotoDiMark"
+                             src="img/Mark.jpg" width="300" height="300">
+                        <h2><a href="#indirizzo_Mark">Mark Zuckerberg </a></h2>  
+                    </div>
+                    <div id="post1_testo">
+                            <p> Fiamma! Oggi prima lezione di PR1. Solo bomba! Mi piace troppo! int i, int i=0, printf("Gia sesi acconciu"); </p>
+                    </div>
+                </div>
+                
+                <!--secondo post con allegata una immagine-->
+                <div id="post2">
+                    <div id="profiloHackerino">
+                        <img title="profiloHackerino" alt="FotoDiHackerino"
+                             src="img/picHacherino.jpg" width="480" height="360">
+                        <h2><a href="#indirizzo_Hackerino">Hack Rino </a></h2>
+                    </div>
+                    <div id="post2_testo">
+                            <img title="cistannotracciando" alt="FotoDiHackStaccah"
+                             src="img/imhacherino.jpg" width="480" height="360">
+                            <p>Ci stanno tracciando, staccaaaaaaaa</p>
+                    </div>
+                </div>
+                
+                <!--terzo post con allegato un link-->
+                <div id="post3">
+                    <div id="profiloJonSudano">
+                        <img title="profiloJonSudano" alt="FotoDiJonsudano"
+                             src="img/jonsudano.jpg" width="630" height="400">
+                        <h2><a href="#indirizzo_JonSudano">Jon Sudano </a></h2>
+                    </div>
+                    <div id="post3_testo">
+                        <p> Follow me and see a <a href=" https://www.youtube.com/watch?v=gTwxtYin1p0 " target="_blank"> new video </a> on Youtube </p>
+                    </div>
+                </div>           
+            </div>     
+        </div>
     </body>
 </html>
