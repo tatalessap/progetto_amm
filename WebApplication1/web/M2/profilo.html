@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Profilo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Marta Pibiri">
+        <meta name="keywords" content="profilo profilonerdbook nerdbook datiNerdbook">
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+
+    </head>
+    <body>
+        <header>
+            <div id="title">               
+                <h1>Profilo-NerdBook</h1>
+            </div>
+        </header>
+        
+        <div id="login">
+            <div id="collegamentiesterni">
+                <nav>
+                        <ul>
+                            <li><a href="descrizione.html">Descrizione</a></li>
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
+                    </nav>
+            </div>
+            <!--Informazioni personali dell'utente -->
+            <div id="informazioninput">
+                <form action="Profile.asp" method="get">
+                    <!--Nome dell'utente -->
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome"
+                           id="nome"/>
+                    <br/>
+                    <!--Cognome dell'utente-->
+                    <label for="cognome">Cognome:</label>
+                    <input type="text" name="cognome"
+                           id="cognome"/>
+                    <br/>
+                    <!--Immagine profilo utente-->
+                    <label for="urlImmagine">URL Immagine:</label> 
+                    <input type="url" name="immagine"
+                           id="urlImmagine" />
+                    <br/>
+                    <!--Descrizione personale utente-->
+                    <label for="fraseDescrizione">Biografia:</label>
+                    <textarea rows="10" cols="40"
+                              name="fraseDescrizione"
+                              id="fraseDescrizione">
+                    Inserisci una breve frase di descizione:
+                    </textarea>
+                    <br/>
+                    <!--Data di nascita-->
+                    <label for="date">Data di nascita:</label>
+                    <input type="date" name="date" id="date"/>
+                    <br/>
+                    <!--Password utente -->
+                    <label for="password">Password:</label>
+                    <input type="password" name="pswd"
+                           id="password" />
+                    <br/>
+                    <label for="Confermapassword">Conferma password:</label>
+                    <input type="password" name="Confermapswd"
+                           id="Confermapassword" />
+                    <br/>
+                    <input type="submit" value="Conferma"/>
+                    <input type="reset" value="Reset"/>
+                </form>  
+            </div>
+        </div>
+    </body>
+</html>

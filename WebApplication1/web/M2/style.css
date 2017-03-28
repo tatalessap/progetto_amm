@@ -1,0 +1,19 @@
+/* 
+    Created on : 28-mar-2017, 11.52.21
+    Author     : marta_nga0hmy
+*/
+
+body {
+    background: white;
+    font: 20px Candara;
+}
+
+h1 {
+    background: cadetblue;
+    color: whitesmoke;
+}
+
+#titleNerdBook{
+    text-align: center;
+}
+
