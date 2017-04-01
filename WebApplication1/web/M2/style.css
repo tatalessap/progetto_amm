@@ -5,15 +5,89 @@
 
 body {
     background: white;
+    color: black;
     font: 20px Candara;
 }
 
-h1 {
+header {
     background: cadetblue;
-    color: whitesmoke;
+    border-style: solid;
+    border-color: grey;
 }
 
-#titleNerdBook{
-    text-align: center;
+h1 {
+    font: 40px Candara;
+    text-indent: 50px;
+    line-height: 50px;
+    color: whitesmoke;
+    text-align: left;
+    font-weight: bold;
+}
+
+h2 {
+    background: gainsboro;
+    border-style: solid;
+    text-align: left;
+    text-indent: 50px;
+    line-height: 50px;
+    color: cadetblue;
+    font: 30px Candara;
+    font-weight: bold;
+}
+
+h3 {
+    color: cadetblue;
+    text-indent: 10px;
+    line-height: 50px;
+    text-align: left;
+    font: 25px Candara;
+    font-weight: bold;
+}
+
+header #collegamentiesterni nav ul li a{
+    color: whitesmoke;
+    text-align: left;
+    font: 23px Candara;
+    font-weight: bold;
+    display: inline;
+}
+
+#welcome #title #collegamentiinterni nav ul li a{
+    color: grey;
+    font: 23px Candara;
+    font-weight: bold;
+    list-style-type: disc;
+}
+
+#paragrafo {
+    color: darkslategrey;
+    font: 20px Candara;
+}
+
+
+p {
+    color: darkslategrey;
+    font: 20px Candara;   
+}
+
+form {
+    color: darkcyan;
+    font: 18px Candara;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+a:link {
+    color: coral;
+    text-decoration: none;
+    font: 20px Candara;
+}
+
+a:visited{
+    color: coral;
+    font: 20px Candara;
 }
 
