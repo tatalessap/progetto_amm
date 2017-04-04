@@ -12,9 +12,8 @@
     </head>
     <body>
         <header>
-            <!--titolo principale-->
-            <div id="title">
-                <div id="collegamentiesterni">
+            <h1>Login-NerdBook</h1>
+                <div class="collegamentiesterni">
                     <nav>
                         <ul>
                             <li><a href="bacheca.html">Bacheca Personale</a></li>
@@ -23,27 +22,24 @@
                         </ul>
                     </nav>
                 </div>
-                <h1>Login-NerdBook</h1>
-            </div>
         </header>
-        <div class="iscrizioneLogin">
-            <div id="DescrizioneLogin">
-                <h3>Per poter effuttuare l'accesso o registrarti, inserisci i seguenti dati:</h3>
-                <div id="InserisciDati">
+        <div id="DescrizioneLogin" class="iscrizioneLogin">
+            
+                <h3 id="titoloLogin">NerdBook:</h3>
+                
+                <div class="InserisciDati">
+                    
                     <form action="login.asp" method ="get">
                         <label for="username">Username:</label>
                         <input type="text" name="username"
                                id="username" value="inserisci il tuo username" />
-                        <br />
                         <label for="password">Password:</label>
                         <input type="text" name="password"
                                id="password" value="inserisci password" />
-                        <br />
-                        <input type="submit" value="Conferma"/>
-                        <input type="reset" value="Reset"/>
+                        
+                        <button type="submit"/>Conferma</button>
                     </form>
                 </div>
-            </div>
         </div>
     </body>
 </html>
