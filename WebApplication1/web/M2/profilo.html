@@ -22,7 +22,7 @@
                 </nav>
             </div>
             <div class="profiloattivo">
-                <h3>Ispettore Colombo</h3>
+                <h3>Tenente Colombo</h3>
                 <h3> <a href=#out> Logout </a> </h3>
             </div>
         </header>
@@ -64,49 +64,63 @@
             </div>
         </div>
         
-        <div class="login">
+        <div class="Pic">
+                <img title="profiloTenente" alt="FotoDiTenente"
+                             src="img/tenente_colombo.jpg" width="450" height="325">
+            </div>
+        
+        <div class="login_profilo">
             <!--Informazioni personali dell'utente -->
-            <div id="infoinput">
                 <form action="Profile.asp" method="get">
                     <!--Nome dell'utente -->
-                    <label for="nome">Nome:</label>
-                    <input type="text" name="nome"
-                           id="nome"/>
-                    <br/>
-                    <!--Cognome dell'utente-->
-                    <label for="cognome">Cognome:</label>
-                    <input type="text" name="cognome"
-                           id="cognome"/>
-                    <br/>
-                    <!--Immagine profilo utente-->
-                    <label for="urlImmagine">URL Immagine:</label> 
-                    <input type="url" name="immagine"
-                           id="urlImmagine" />
-                    <br/>
-                    <!--Descrizione personale utente-->
-                    <label for="fraseDescrizione">Biografia:</label>
-                    <textarea rows="10" cols="40"
-                              name="fraseDescrizione"
-                              id="fraseDescrizione">
-                              Inserisci una breve frase di descizione:
-                    </textarea>
-                    <br/>
-                    <!--Data di nascita-->
-                    <label for="date">Data di nascita:</label>
-                    <input type="date" name="date" id="date"/>
-                    <br/>
-                    <!--Password utente -->
-                    <label for="password">Password:</label>
-                    <input type="password" name="pswd"
-                           id="password" />
-                    <br/>
-                    <label for="Confermapassword">Conferma password:</label>
-                    <input type="password" name="Confermapswd"
-                           id="Confermapassword" />
-                    <br/>
-                    <input type="submit" value="Aggiorna"/>
+                    <div id="datiutente"> 
+                        <div id="textareaa">
+                                <label for="nome">Nome:</label>
+                                <input type="text" name="nome"
+                                       id="nome"/>
+                        </div>
+                        <div id="textareaa">
+                             <!--Cognome dell'utente-->
+                                <label for="cognome">Cognome:</label>
+                                <input type="text" name="cognome"
+                                       id="cognome"/>
+                        </div>
+                                <!--Immagine profilo utente-->
+                        <div id="textareaa">
+                                <label for="urlImmagine">URL Immagine:</label> 
+                                <input type="url" name="immagine"
+                                       id="urlImmagine" />
+                        </div>
+                                <!--Descrizione personale utente-->
+                        <div id="textareaa">
+                                <label for="fraseDescrizione">Biografia:</label>
+                                <textarea rows="10" cols="40"
+                                          name="fraseDescrizione"
+                                          id="fraseDescrizione">
+                                          Inserisci una breve frase di descizione:
+                                </textarea>
+                        </div>
+                                <!--Data di nascita-->
+                        <div id="textareaa">
+                                <label for="date">Data di nascita:</label>
+                                <input type="date" name="date" id="date"/>
+                        </div>
+                        <div id="textareaa">
+                                <!--Password utente -->
+                                <label for="password">Password:</label>
+                                <input type="password" name="pswd"
+                                       id="password" />
+                        </div>
+                        <div id="textareaa">
+                                <label for="Confermapassword">Conferma password:</label>
+                                <input type="password" name="Confermapswd"
+                                       id="Confermapassword" />
+                        </div>
+                    </div>
+                    
+                    <div id="aggiorna"> <input type="submit" value="Aggiorna"/> </div>
+                    
                 </form>  
             </div>
-        </div>
     </body>
 </html>
