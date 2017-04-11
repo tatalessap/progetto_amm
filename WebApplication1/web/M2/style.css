@@ -15,7 +15,7 @@
         background: cadetblue;
         border-style: solid;
         border-color: grey;
-        height: 100px;
+        height: 130px;
     }
 
     h1 {
@@ -54,7 +54,7 @@
         padding-left: 20px;
     }
     .collegamentiesterni nav {
-        height: 100px;
+        height: 130px;
     }
 
     .collegamentiesterni a:hover {
@@ -113,6 +113,7 @@
     a:hover {
         font-weight: bold;
     }
+    
 
     .latosx {
         float: left;
@@ -203,24 +204,26 @@
         border-style: solid;
         border-color: #cccccc;
         border-width: 3px;
-        height: 50%;
-        width: 20%;
+        height: 200px;
+        width: 400px;
         text-align: center;
-        display: block;
-        margin: auto;
+        display: inline-block;
+        margin-left: 37%;
         padding: 0px;
     }
 
     .InserisciDati label, input, button {
+        margin-left: 10%;
+        margin-top: 3%;
         float: left;
         clear: both;
-        margin: 5px;
-        width: 80%;
+        width: 75%;
         text-align: center;
     }
 
     .InserisciDati button {
-        width: 93%;
+        margin-top: 5%;
+        width: 76%;
     }
 
     .iscrizioneLogin h3 {
@@ -237,8 +240,9 @@
     }
 
     .Pic img {
-        max-height: 20%;
-        max-width: 100%;
+        border-radius: 10px;
+        max-height: 250px;
+        max-width: 90%;
     }
 
     .login_profilo form #datiutente {
@@ -260,18 +264,19 @@
     }
 
     .login_profilo form #aggiorna {
-        width: 50%;
+        width:51%;
         float: left;
-        display: inline-block;
-        text-align: center;
-        padding: 3px;
+        
     }
 
     .login_profilo form #aggiorna input {
+        text-align: center;
         width: 98.70%;
+        margin-left: 0%;
     }
+    
+    
 }
-
 @media only screen and (min-width: 480px) and (max-width: 1024px){
     body {
         background: white;
@@ -476,24 +481,26 @@
         border-style: solid;
         border-color: #cccccc;
         border-width: 3px;
-        height: 50%;
-        width: 20%;
+        height: 200px;
+        width: 400px;
         text-align: center;
-        display: block;
-        margin: auto;
+        display: inline-block;
+        margin-left: 36%;
         padding: 0px;
     }
 
     .InserisciDati label, input, button {
+        margin-left: 10%;
+        margin-top: 3%;
         float: left;
         clear: both;
-        margin: 5px;
-        width: 80%;
+        width: 75%;
         text-align: center;
     }
 
     .InserisciDati button {
-        width: 93%;
+        margin-top: 5%;
+        width: 76%;
     }
 
     .iscrizioneLogin h3 {
@@ -510,6 +517,7 @@
     }
 
     .Pic img {
+        border-radius: 10px;
         max-height: 20%;
         max-width: 100%;
     }
@@ -533,15 +541,15 @@
     }
 
     .login_profilo form #aggiorna {
-        width: 50%;
+        width:51%;
         float: left;
-        display: inline-block;
-        text-align: center;
-        padding: 3px;
+        
     }
 
     .login_profilo form #aggiorna input {
+        text-align: center;
         width: 98.70%;
+        margin-left: 0%;
     }
     
 }
@@ -592,7 +600,6 @@
             color: whitesmoke;
             font: 20px Candara;
             float: left;
-            
             margin-right: 0px;
     }
     .collegamentiesterni ul, .collegamentiesterni ol, .collegamentiesterni li {
@@ -756,8 +763,8 @@
             border-style: solid;
             border-color: #cccccc;
             border-width: 3px;
-            height: 175px;
-            width: 480px;
+            height: 150px;
+            width: 400px;
             text-align: center;
             display: block;
             padding: 0px;
