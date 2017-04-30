@@ -14,19 +14,19 @@ public class UtentiRegistrati {
     private int personalID;
     String nomeUtente;
     private String cognomeUtente;
-    private String urlFotoProfilo;
+    private String url;
     private String biografia;
     private String dataNascita; 
     private String password;
     
     public UtentiRegistrati (){
-        this.personalID=0;
-        this.nomeUtente=" ";
-        this.cognomeUtente=" ";
-        this.urlFotoProfilo=" ";
-        this.biografia=" ";
-        this.dataNascita=" ";
-        this.password=" ";
+        this.personalID=-1;
+        this.nomeUtente="";
+        this.cognomeUtente="";
+        this.url="";
+        this.biografia="";
+        this.dataNascita="";
+        this.password="";
        }
     
     /**
@@ -78,14 +78,14 @@ public class UtentiRegistrati {
      * @return the urlFotoProfilo
      */
     public String getUrl() {
-        return urlFotoProfilo;
+        return url;
         }
     
     /**
-     * @param urlFotoProfilo immagine profilo
+     * @param url immagine profilo
      */
-    public void setUrl(String urlFotoProfilo) {
-        this.urlFotoProfilo=urlFotoProfilo;
+    public void setUrl(String url) {
+        this.url=url;
     }
     
     
@@ -131,6 +131,16 @@ public class UtentiRegistrati {
      */
     public void setPassw (String password){
         this.password=password;
+    }
+    
+    public boolean controlloprofilo(UtentiRegistrati utente) {
+        if ( utente.getNome().equals("") || utente.getCognome().equals("") || utente.getDataNascita().equals("") ||
+              utente.getUrl().equals("") || utente.getBiografia().equals("")) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
     

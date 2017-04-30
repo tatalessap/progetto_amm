@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
@@ -11,7 +13,7 @@
 
     </head>
     <body>
-        <header>
+<!--        <header>
             <h1>Login-NerdBook</h1>
                 <div class="collegamentiesterni">
                     <nav>
@@ -22,20 +24,20 @@
                         </ul>
                     </nav>
                 </div>
-        </header>
+        </header>-->
+        <c:set var="title" value="Bacheca Personale" scope="request"/>
+        <jsp:include page="header.jsp"/>
         <div id="DescrizioneLogin" class="iscrizioneLogin">
             
                 <h3 id="titoloLogin">NerdBook:</h3>
                 
                 <div class="InserisciDati">
                     
-                    <form action="login.asp" method ="get">
+                    <form action="Login" method ="post">
                         <label for="username">Username:</label>
-                        <input type="text" name="username"
-                               id="username" value="inserisci il tuo username" />
+                        <input type="text" name="username" id="username"/>
                         <label for="password">Password:</label>
-                        <input type="text" name="password"
-                               id="password" value="inserisci password" />
+                        <input type="password" name="password" id="password"  />
                         
                         <button type="submit">Conferma</button>
                     </form>

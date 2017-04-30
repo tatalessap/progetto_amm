@@ -19,12 +19,15 @@ public class Post {
     protected UtentiRegistrati utente;
     private String content;
     private Type postType;
+    private String image; 
     
     public Post() {
         id = 0;
         utente = null;
-        content = " ";
+        content = "";
         postType = Type.POST_TESTO;
+        image = "";
+        
     }
     
     /**
@@ -39,6 +42,20 @@ public class Post {
      */
     public void setId(int id) {
         this.id = id;
+    }
+    
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
     
     

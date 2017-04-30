@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
@@ -11,21 +13,9 @@
 
     </head>
     <body>
-        <header>
-            <div id="titleNerdBook">
-                <h1>NERDBOOK</h1>
-            </div>
-            <div class="collegamentiesterni">
-                    <nav>
-                        <ul>
-                            <li><a href="bacheca.html">Bacheca</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="profilo.html">Profilo</a></li>
-                        </ul>
-                    </nav>
-                </div>
-        </header>
-        <!--accoglienza utente-->
+        <c:set var="title" value="Bacheca Personale" scope="request"/>
+        <jsp:include page="header.jsp"/>
+<!--accoglienza utente-->
         <div class="welcome">
             <div id="top">
                 <h2>Benvenuti:</h2>
@@ -46,14 +36,14 @@
                     <div id="CosaVuolDireNerdBook">
                         <h3>Cosa vuol dire NerdBook?</h3>
                     </div>
-                    <p>La traduzione più vicina a "NerdBook" è faccia da nerd; ma perchè questo nome? Sostanzialmente è una piattaforma in cui tutti i nerd del mondo, possono scambiare opinioni, dialoghi, commenti e tanto altro senza essere additati dalla società moderna che non capisce le nostre passioni.</p>
+                    <p>La traduzione piÃ¹ vicina a "NerdBook" Ã¨ faccia da nerd; ma perchÃ¨ questo nome? Sostanzialmente Ã¨ una piattaforma in cui tutti i nerd del mondo, possono scambiare opinioni, dialoghi, commenti e tanto altro senza essere additati dalla societÃ  moderna che non capisce le nostre passioni.</p>
                 </div>
                 
                 <div id="ComeFunzionaNerdBook">
                     <h3>Come funziona NerdBook?</h3>
                     
                     <div class="paragrafo">
-                        <p>Da una idea così semplice, si ricava un funzionamento altrettanto semplice:  </p>
+                        <p>Da una idea cosÃ¬ semplice, si ricava un funzionamento altrettanto semplice:  </p>
                             <div class="lista">
                                 <nav>
                                     <ul>
@@ -70,7 +60,7 @@
                 <div id="ComeIscriversi">
                     <h3>Come Iscriversi?</h3>
                     <div class="paragrafo">
-                        <p>Ti basterà inserire i tuoi dati al momento della iscrizione;</p>
+                        <p>Ti basterÃ  inserire i tuoi dati al momento della iscrizione;</p>
                         <div class="lista">
                             <nav>
                                 <ul>
