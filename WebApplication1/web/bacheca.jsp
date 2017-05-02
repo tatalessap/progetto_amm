@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page  import="Modelli.UtentiRegistrati"%>
+<%@page  import="Modelli.classi.UtentiRegistrati"%>
 
 <!DOCTYPE html>
+<!--Visualizzazione della bacheca con i propri post personali e possibilità di accedere alle bacheche degli altri-->
 
 <html>
     <head>
@@ -22,17 +23,18 @@
 
 
         <div class="bacheca">
-            <!--Esempi-->
+            <!--            Ciclo per poter visualizzare i post del singolo utene o di altri utenti, dove vengono richiamati nome, cognome, immagine visualizzata in piccolo e post-->
+
             <div id="posts"
                  <c:forEach var="post" items="${posts}">
                      <div class="post">
                          <div id="${post.utente.nome}" class="profilo">
-                             <img title="profilo${post.utente.nome}" alt="Foto${post.utente.nome}" src="${post.utente.url}" width="630" height="400">
-                             <h2><a href="#indirizzo_Hackerino">${post.utente.nome} ${post.utente.cognome} </a></h2>
+                             <img title="profilo${post.utente.nome}" alt="Foto${post.utente.nome}" src="${post.utente.url}" >
+                             <h2><a href="#indirizzo_profilo">${post.utente.nome} ${post.utente.cognome} </a></h2>
                          </div>
                          <div class="post_testo">
                              <c:if test="${not empty post.image}"><img title="im" alt="imm"
-                                  src="${post.image}" width="480" height="360"> </c:if>
+                                  src="${post.image}" > </c:if>
                              <p>${post.content}</p>
                          </div>
                      </div>

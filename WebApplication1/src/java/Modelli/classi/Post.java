@@ -1,35 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelli;
+package Modelli.classi;
 
 /**
  *
  * @author marta_nga0hmy
  */
 public class Post {
-    
+
     public enum Type {
         POST_TESTO, POST_IMMAGINE,
     };
-    
+
     protected int id;
     protected UtentiRegistrati utente;
     private String content;
     private Type postType;
-    private String image; 
-    
+    private String image;
+
     public Post() {
         id = 0;
         utente = null;
         content = "";
         postType = Type.POST_TESTO;
         image = "";
-        
+
     }
-    
+
     /**
      * @return the id
      */
@@ -43,7 +38,7 @@ public class Post {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     /**
      * @return the image
      */
@@ -57,8 +52,7 @@ public class Post {
     public void setImage(String image) {
         this.image = image;
     }
-    
-    
+
     /**
      * @return utente
      */
@@ -72,7 +66,7 @@ public class Post {
     public void setUtente(UtentiRegistrati utente) {
         this.utente = utente;
     }
-    
+
     /**
      * @return the content
      */
@@ -86,7 +80,7 @@ public class Post {
     public void setContent(String content) {
         this.content = content;
     }
-    
+
     /**
      * @return the postType
      */
@@ -100,6 +94,5 @@ public class Post {
     public void setPostType(Type postType) {
         this.postType = postType;
     }
-    
-    
+
 }

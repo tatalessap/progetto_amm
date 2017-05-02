@@ -1,11 +1,12 @@
+package Modelli.servlet;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelli;
-
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import Modelli.classi.UtentiRegistrati;
+import Modelli.classi.UtentiRegistratiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,15 +21,6 @@ import javax.servlet.http.HttpSession;
  */
 public class Login extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -56,18 +48,19 @@ public class Login extends HttpServlet {
 
                 //se l'utente è valido...
                 if (loggedUserID != -1) {
+                    //la sessione è iniziata 
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("loggedUserID", loggedUserID);
-
+                    //se ha campi incompleti viene rimandato in profilo
                     if (UtentiRegistratiFactory.getInstance().controlloprofilo(loggedUserID) == false) {
                         request.getRequestDispatcher("profilo.jsp").forward(request, response);
                     } else {
-
+                        //altrimenti in bacheca
                         request.getRequestDispatcher("Bacheca").forward(request, response);
                         return;
                     }
 
-                } else { //altrimenti se la coppia user/pass non è valida (id==-1)
+                } else { //nel caso in cui la coppia user name e password non sia valida, torno di nuovo nel login
 
                     //ritorno al form del login informandolo che i dati non sono validi
                     request.setAttribute("invalidData", true);
@@ -119,9 +112,5 @@ public class Login extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private boolean controlloprofilo(UtentiRegistrati utentiRegistratiById) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

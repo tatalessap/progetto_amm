@@ -7,12 +7,24 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="latosx">
+    
     <input type="text" name="cerca" id="ricerca" value="Cerca.."/>
     <div id="personeLista">
-        <p> Persone </p>
+        <p> Utenti: </p>
         <nav>
             <ul>
-                <li>
+<!--                <c:forEach var="Listautenti" items="${Listautenti}">
+                    <li> <div id="${Listautenti}" class="profilo">
+                            <h2><a href="bacheca.html?postvisualizati=true&idOtherUser=${Listautenti.idUtente}">${Listautenti.nome} ${Listautenti.cognome} </a>
+                            </h2>
+                        </div> </li>
+                </c:forEach>-->
+                         
+<!--                         <c:forEach var="nomiutenti" items="${DButenti}">
+               <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&idOtherUser=${nomiutenti.idUtente}">
+                    ${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>-->
+                <!--</c:forEach>-->
+<!--                <li>
                     <a href=#GiulioCesare> Giulio Cesare </a>
                 </li>
                 <li>
@@ -20,7 +32,7 @@
                 </li>
                 <li>
                     <a href=#Romolo> Romolo </a>
-                </li>
+                </li>-->
             </ul>
         </nav>
     </div>
@@ -29,14 +41,10 @@
         <p> Gruppi </p>
         <nav>
             <ul>
-                <li>
-                    <a href=#chistava> Chi stava guardando la melevisione l'undici settembre </a>
-                </li>
-                <li>
-                    <a href=#natale>X chi vuole partire a Milano per Natale</a>
-                </li>
-                <li>
-                    <a href=#sette> SettePugnalate: il locale</a>
+                <c:forEach var="gruppi" items="${listaGruppi}">                
+                    <li><div class="botdiv"><a href="bacheca.html?postgruppivisualizati=true&idGruppoSideBar=${gruppi.id}">
+                                ${gruppi.nameGroup}</a></div></li>                
+                </c:forEach>
                 </li>
             </ul>
         </nav>

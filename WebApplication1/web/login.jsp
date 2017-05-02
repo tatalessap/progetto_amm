@@ -13,18 +13,7 @@
 
     </head>
     <body>
-<!--        <header>
-            <h1>Login-NerdBook</h1>
-                <div class="collegamentiesterni">
-                    <nav>
-                        <ul>
-                            <li><a href="bacheca.html">Bacheca Personale</a></li>
-                            <li><a href="descrizione.html">Login</a></li>
-                            <li><a href="profilo.html">Profilo Personale</a></li>
-                        </ul>
-                    </nav>
-                </div>
-        </header>-->
+<!--        pagina per poter accedere al proprio profilo, in cui sono comprese la JSP di barra superiore.-->
         <c:set var="title" value="Bacheca Personale" scope="request"/>
         <jsp:include page="header.jsp"/>
         <div id="DescrizioneLogin" class="iscrizioneLogin">

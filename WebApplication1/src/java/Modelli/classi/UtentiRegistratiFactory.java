@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelli;
+package Modelli.classi;
 
-import static com.oracle.webservices.api.databinding.DatabindingModeFeature.ID;
 import java.util.ArrayList;
 
 /**
@@ -123,4 +117,20 @@ public class UtentiRegistratiFactory {
         return false;
 
     }
+
+    public ArrayList<UtentiRegistrati> getUtenti(UtentiRegistrati utenteloggato) {
+        ArrayList<UtentiRegistrati> nuovalista = new ArrayList<UtentiRegistrati>();
+        for (UtentiRegistrati utente : this.listaUtenti) {
+            if (!(utente.equals(utenteloggato))) {
+                nuovalista.add(utente);
+            }
+        }
+        return nuovalista;
+    }
+
+    public ArrayList<UtentiRegistrati> getUtenti() {
+
+        return this.listaUtenti;
+    }
+
 }

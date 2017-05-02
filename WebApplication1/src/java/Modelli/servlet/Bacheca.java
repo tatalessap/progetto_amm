@@ -1,12 +1,18 @@
+package Modelli.servlet;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelli;
-
+import Modelli.classi.Gruppi;
+import Modelli.classi.GruppiFactory;
+import Modelli.classi.UtentiRegistrati;
+import Modelli.classi.PostFactory;
+import Modelli.classi.UtentiRegistratiFactory;
+import Modelli.classi.Post;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,52 +26,45 @@ import javax.servlet.http.HttpSession;
  */
 public class Bacheca extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
+        ArrayList<Gruppi> listaGruppi = GruppiFactory.getInstance().getGruppi();
+        request.setAttribute("listaGruppi", listaGruppi);
+
         HttpSession session = request.getSession(false);
-        
-        //se la sessione esiste ed esiste anche l'attributo loggedIn impostato a true
-        if(session!=null && 
-           session.getAttribute("loggedIn")!=null &&
-           session.getAttribute("loggedIn").equals(true)){
-            
-            
+
+//          l'attributo loggeIn è impostato a true se la sessione esiste
+        if (session != null
+                && session.getAttribute("loggedIn") != null
+                && session.getAttribute("loggedIn").equals(true)) {
+
             String user = request.getParameter("user");
-            
+
             int userID;
 
-            if(user != null){
+            if (user != null) {
                 userID = Integer.parseInt(user);
             } else {
-                Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
+                Integer loggedUserID = (Integer) session.getAttribute("loggedUserID");
                 userID = loggedUserID;
             }
 
             UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
-            if(utente != null){
+            if (utente != null) {
                 request.setAttribute("utente", utente);
-
+//          preparazione lista utente per poi passarlo alla JSP per la visualizzazione
                 List<Post> posts = PostFactory.getInstance().getPostList(utente);
                 request.setAttribute("posts", posts);
-
+//          dopo aver effettuato il login, l'utente viene rimandanto nella bacheca
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
             } else {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }
-        }
-        else{
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else {
+            //se non è loggato verrà mandato nella pagina errore
+            request.getRequestDispatcher("MexError.jsp").forward(request, response);
         }
     }
 

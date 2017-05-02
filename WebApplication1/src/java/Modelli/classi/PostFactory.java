@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelli;
+package Modelli.classi;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -69,8 +64,7 @@ public class PostFactory {
     public List getPostList(UtentiRegistrati utente) {
 
         List<Post> listaPost = new ArrayList<Post>();
-        
-        
+
         for (Post post : this.listaPost) {
             if (post.getUtente().equals(utente)) {
                 listaPost.add(post);

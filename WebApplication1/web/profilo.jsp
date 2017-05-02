@@ -12,70 +12,84 @@
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
 
     </head>
+    <!--    pagina profilo in cui si inseriscono i dati dell'utente e dove viene reinderizzato in caso non abbia compleato tutti i campi.-->
     <body>
 
         <c:set var="title" value="Bacheca Personale" scope="request"/>
         <jsp:include page="header.jsp"/>
-        
         <jsp:include page="latosx.jsp"/>
-        
+
         <div class="Pic">
-                <img title="profiloTenente" alt="FotoDiTenente"
-                             src="img/tenente_colombo.jpg" width="450" height="325">
-            </div>
-        
+            <img title="profiloTenente" alt="FotoDiTenente"
+                 src="img/tenente_colombo.jpg" width="450" height="325">
+        </div>
+
         <div class="login_profilo">
             <!--Informazioni personali dell'utente -->
-                <form action="Profile.asp" method="get">
-                    <!--Nome dell'utente -->
-                    <div id="datiutente"> 
-                        <div class="textareaa">
-                                <label for="nome">Nome:</label>
-                                <input type="text" name="nome" placeholder="Inserisci il tuo nome"
-                                       id="nome"/>
+            <form action="Profilo?salva=true" method="post">
+                <div id="datiutente"> 
+                    <div class="textareaa">
+                        <!--                        inserimento dei dati dell'utente tramite Servlet-->
+                        <label for="nome">Nome:</label>
+                        <input type="text" name="nome" placeholder="Inserisci il tuo nome"
+                               id="nome"
+                               <c:if test="${not empty nome}">value="${nome}"</c:if>
+                               <c:if test="${not empty utente.nome}">value="${utente.nome}"</c:if>>
                         </div>
                         <div class="textareaa">
-                             <!--Cognome dell'utente-->
-                                <label for="cognome">Cognome:</label>
-                                <input type="text" name="cognome" placeholder="Inserisci il tuo cognome"
-                                       id="cognome"/>
+                            <label for="cognome">Cognome:</label>
+                            <input type="text" name="cognome" placeholder="Inserisci il tuo cognome"
+                                   id="cognome"
+                            <c:if test="${not empty cognome}">value="${cognome}"</c:if>
+                            <c:if test="${not empty utente.cognome}">value="${utente.cognome}"</c:if>>
+
                         </div>
-                                <!--Immagine profilo utente-->
+
                         <div class="textareaa">
-                                <label for="urlImmagine">URL Immagine:</label> 
-                                <input type="url" name="immagine" placeholder="Inserisci URL della tua immagine"
-                                       id="urlImmagine" />
+                            <label for="immagine">Url immagine profilo:</label>
+                            <input type="text" name="immagine" placeholder="Inserisci URL della tua immagine"
+                                   id="immagine"
+                            <c:if test="${not empty immagine}">value="${immagine}"</c:if>
+                            <c:if test="${not empty utente.immagine}">value="${utente.immagine}"</c:if>>
+
                         </div>
-                                <!--Descrizione personale utente-->
+                        <!--Descrizione personale utente-->
                         <div class="textareaa">
-                                <label for="fraseDescrizione">Biografia:</label>
-                                <textarea rows="7" cols="20"
-                                          name="fraseDescrizione"
-                                          id="fraseDescrizione">
-                                          
-                                </textarea>
+                            <label for="fraseDescrizione">Inserisci la tua biografia:</label>
+                            <input type="text" name="fraseDescrizione" placeholder="Inserisci la tua biografia"
+                                   id="fraseDescrizione"
+                            <c:if test="${not empty fraseDescrizione}">value="${fraseDescrizione}"</c:if>
+                            <c:if test="${not empty utente.fraseDescrizione}">value="${utente.fraseDescrizione}"</c:if>>
+
+
+                            </textarea>
                         </div>
-                                <!--Data di nascita-->
+
                         <div class="textareaa">
-                                <label for="date">Data di nascita:</label>
-                                <input type="date" name="date" id="date"/>
+                            <label for="date">Data di nascita:</label>
+                            <input type="date" name="date" placeholder="Data di nascita:"
+                                   id="date"
+                            <c:if test="${not empty date}">value="${date}"</c:if>
+                            <c:if test="${not empty utente.date}">value="${utente.date}"</c:if>>
+
                         </div>
                         <div class="textareaa">
-                                <!--Password utente -->
-                                <label for="password">Password:</label>
-                                <input type="password" name="pswd" placeholder="Inserisci la tua password"
-                                       id="password" />
-                        </div>
-                        <div class="textareaa">
-                                <label for="Confermapassword">Conferma password:</label>
-                                <input type="password" name="Confermapswd" placeholder="Conferma la tua password"
-                                       id="Confermapassword" />
-                        </div>
+                            <label for="date">Inserisci la tua password:</label>
+                            <input type="password" name="password" placeholder="Inserisci la tua password"
+                                   id="password"
+                            <c:if test="${not empty password}">value="${password}"</c:if>
+                            <c:if test="${not empty utente.password}">value="${utente.password}"</c:if>>
                     </div>
-                    
-                    <div id="aggiorna"> <input type="submit" value="Aggiorna"/> </div>
-                    
-                </form>  
-            </div>
+                    <div class="textareaa">
+                        <label for="Confermapassword">Conferma password:</label>
+                        <input type="password" name="Confermapswd" placeholder="Conferma la tua password"
+                               id="Confermapassword" />
+                    </div>
+                </div>
+                <!--pulsante per l'aggiornamento dei dati-->
+                <div id="aggiorna"> <input type="submit" value="Aggiorna"/> </div>
+
+            </form>  
+        </div>
     </body>
 </html>

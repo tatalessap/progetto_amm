@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
-* and open the template in the editor./*
-*/
-package Modelli;
+package Modelli.classi;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +7,8 @@ import java.util.List;
  *
  * @author marta_nga0hmy
  */
-
-
 public class Gruppi {
-    
+
     public enum TypeGroup {
         SEGRETO, PUBBLICO;
     };
@@ -23,14 +17,14 @@ public class Gruppi {
     protected String nameGroup;
     protected List<UtentiRegistrati> listaUtenti = new ArrayList<>();
     protected TypeGroup tipoG;
-    
+
     public Gruppi() {
         id = 0;
         nameGroup = " ";
-        
+
         tipoG = TypeGroup.PUBBLICO;
     }
-    
+
     /**
      * @return the id
      */
@@ -44,52 +38,49 @@ public class Gruppi {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     /**
      * @return the nameGroup
      */
     public String getNomeG() {
         return nameGroup;
-        }
-    
+    }
+
     /**
      * @param nameGroup nome del gruppo
      */
-    public void setNomeG(String nameGroup){
-        this.nameGroup=nameGroup;
+    public void setNomeG(String nameGroup) {
+        this.nameGroup = nameGroup;
     }
-    
+
     public TypeGroup getType() {
         return tipoG;
     }
-    
-    public void setType(TypeGroup tipoG){
-        this.tipoG=tipoG;
-    }
-    
 
-    
-    public void stampaListaUt (){
+    public void setType(TypeGroup tipoG) {
+        this.tipoG = tipoG;
+    }
+
+    public void stampaListaUt() {
         this.listaUtenti.forEach((i) -> {
             System.out.println(i.nomeUtente);
         });
     }
-    
+
     /**
      *
      * @param utenti
      */
-    public void aggiungi(UtentiRegistrati utenti){
+    public void aggiungi(UtentiRegistrati utenti) {
 
         this.listaUtenti.add(utenti);
 
     }
-    
-    public void aggiungi(List<UtentiRegistrati> lista){
+
+    public void aggiungi(List<UtentiRegistrati> lista) {
         lista.forEach((i) -> {
             this.listaUtenti.add(i);
         });
     }
-    
-    
+
 }

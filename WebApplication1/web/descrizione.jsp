@@ -15,7 +15,7 @@
     <body>
         <c:set var="title" value="Bacheca Personale" scope="request"/>
         <jsp:include page="header.jsp"/>
-<!--accoglienza utente-->
+        <!--accoglienza utente-->
         <div class="welcome">
             <div id="top">
                 <h2>Benvenuti:</h2>
@@ -36,31 +36,31 @@
                     <div id="CosaVuolDireNerdBook">
                         <h3>Cosa vuol dire NerdBook?</h3>
                     </div>
-                    <p>La traduzione piÃ¹ vicina a "NerdBook" Ã¨ faccia da nerd; ma perchÃ¨ questo nome? Sostanzialmente Ã¨ una piattaforma in cui tutti i nerd del mondo, possono scambiare opinioni, dialoghi, commenti e tanto altro senza essere additati dalla societÃ  moderna che non capisce le nostre passioni.</p>
+                    <p>La traduzione più vicina a "NerdBook" è faccia da nerd; ma perchè questo nome? Sostanzialmente è una piattaforma in cui tutti i nerd del mondo, possono scambiare opinioni, dialoghi, commenti e tanto altro senza essere additati dalla società moderna che non capisce le nostre passioni.</p>
                 </div>
-                
+
                 <div id="ComeFunzionaNerdBook">
                     <h3>Come funziona NerdBook?</h3>
-                    
+
                     <div class="paragrafo">
-                        <p>Da una idea cosÃ¬ semplice, si ricava un funzionamento altrettanto semplice:  </p>
-                            <div class="lista">
-                                <nav>
-                                    <ul>
-                                        <li>Per poter accedere devi avere un profilo: puoi effettuare il login o iscriverti <strong>GRATUITAMENTE</strong></li>
-                                        <li>Puoi creare e gestire gruppi</li>
-                                        <li>Puoi inserire post nella propria bacheca personale oppure lasciare messaggi in klingon ma anche in italiano, nella bacheca dei tuoi amiNerd</li>
-                                        <li>Puoi gestire tu il tuo gruppo di amici; puoi chiedere l'amicizia a utenti conosciuti attraverso i gruppi ma anche non confermare le richieste da parte degli sconosciuti</li>
-                                    </ul>
-                                </nav> 
-                            </div>
+                        <p>Da una idea così semplice, si ricava un funzionamento altrettanto semplice:  </p>
+                        <div class="lista">
+                            <nav>
+                                <ul>
+                                    <li>Per poter accedere devi avere un profilo: puoi effettuare il login o iscriverti <strong>GRATUITAMENTE</strong></li>
+                                    <li>Puoi creare e gestire gruppi</li>
+                                    <li>Puoi inserire post nella propria bacheca personale oppure lasciare messaggi in klingon ma anche in italiano, nella bacheca dei tuoi amiNerd</li>
+                                    <li>Puoi gestire tu il tuo gruppo di amici; puoi chiedere l'amicizia a utenti conosciuti attraverso i gruppi ma anche non confermare le richieste da parte degli sconosciuti</li>
+                                </ul>
+                            </nav> 
+                        </div>
                     </div> 
                 </div>
-                
+
                 <div id="ComeIscriversi">
                     <h3>Come Iscriversi?</h3>
                     <div class="paragrafo">
-                        <p>Ti basterÃ  inserire i tuoi dati al momento della iscrizione;</p>
+                        <p>Ti basterà  inserire i tuoi dati al momento della iscrizione;</p>
                         <div class="lista">
                             <nav>
                                 <ul>
