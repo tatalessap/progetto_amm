@@ -14,7 +14,7 @@
                             <li><a href="login.html">Login</a></li>
                             <li><a href="descrizione.jsp">Descrizione</a></li>
                             <li><a href="Bacheca">Bacheca</a> </li>
-                            <li><a href="profilo.jsp">Profilo</a></li>
+                            <li><a href="Profilo">Profilo</a></li>
                         </ul>
                     </nav>
             </div>
