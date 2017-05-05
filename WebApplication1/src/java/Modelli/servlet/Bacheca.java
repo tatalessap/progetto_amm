@@ -28,11 +28,8 @@ public class Bacheca extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
-
-        ArrayList<Gruppi> listaGruppi = GruppiFactory.getInstance().getGruppi();
-        request.setAttribute("listaGruppi", listaGruppi);
-
         HttpSession session = request.getSession(false);
 
 //          l'attributo loggeIn è impostato a true se la sessione esiste
@@ -52,8 +49,17 @@ public class Bacheca extends HttpServlet {
             }
 
             UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
+
             if (utente != null) {
                 request.setAttribute("utente", utente);
+                
+                //lista utenti per la visualizzazione latosx
+        ArrayList<Gruppi> listaGruppi = GruppiFactory.getInstance().getGruppi();
+        request.setAttribute("listaGruppi", listaGruppi);
+        
+        List<UtentiRegistrati> listaUtenti = UtentiRegistratiFactory.getInstance().getUtenti();
+        request.setAttribute("listaUtenti", listaUtenti);
+              
 //          preparazione lista utente per poi passarlo alla JSP per la visualizzazione
                 List<Post> posts = PostFactory.getInstance().getPostList(utente);
                 request.setAttribute("posts", posts);

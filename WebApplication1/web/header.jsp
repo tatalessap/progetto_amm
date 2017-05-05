@@ -16,7 +16,7 @@
     </div>
     <!--            visualizzazione dell'utente autenticato, con nome e cognome-->
     <div class="profiloattivo">
-        <h3>${utente.nome} ${utente.cognome}</h3>
+        <h3>${utente.nomeUtente} ${utente.cognomeUtente}</h3>
         <h3><a href=Login?logout=true>Logout</a></h3>
     </div>
 </header>

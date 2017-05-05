@@ -1,11 +1,14 @@
 package Modelli.servlet;
 
+import Modelli.classi.Gruppi;
+import Modelli.classi.GruppiFactory;
 import Modelli.classi.Post;
 import Modelli.classi.PostFactory;
 import Modelli.classi.UtentiRegistrati;
 import Modelli.classi.UtentiRegistratiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +27,16 @@ public class Profilo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(false);
+        if(request.getParameter("salva") != null)
+            request.setAttribute("salva", true);
+            
+        
+        //lista utenti per la visualizzazione latosx
+                List<UtentiRegistrati> listaUtenti = UtentiRegistratiFactory.getInstance().getUtenti();
+                request.setAttribute("listaUtenti", listaUtenti);
+                
+                ArrayList<Gruppi> listaGruppi = GruppiFactory.getInstance().getGruppi();
+                request.setAttribute("listaGruppi", listaGruppi);
 
 //          l'attributo loggeIn è impostato a true se la sessione esiste
         if (session != null
@@ -55,6 +68,9 @@ public class Profilo extends HttpServlet {
 
                     String immagine = request.getParameter("immagine");
                     request.setAttribute("immagine", immagine);
+                    
+                    String fraseDescrizione = request.getParameter("fraseDescrizione");
+                    request.setAttribute("fraseDescrizione", fraseDescrizione);
 
                     String date = request.getParameter("date");
                     request.setAttribute("date", date);
@@ -62,17 +78,14 @@ public class Profilo extends HttpServlet {
                     String password = request.getParameter("password");
                     request.setAttribute("password", password);
 
-                    String fraseDescrizione = request.getParameter("fraseDescrizione");
-                    request.setAttribute("fraseDescrizione", fraseDescrizione);
+                    
 
                 } else {
 
                     request.setAttribute("utente", utente);
 
                 }
-                //lista utenti per la visualizzazione latosx
-                List<UtentiRegistrati> Listautenti = UtentiRegistratiFactory.getInstance().getUtenti(utente);
-                request.setAttribute("Listautenti", Listautenti);
+                
 
                 request.getRequestDispatcher("profilo.jsp").forward(request, response);
             } else {

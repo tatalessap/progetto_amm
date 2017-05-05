@@ -9,23 +9,23 @@ import java.util.List;
  */
 public class Gruppi {
 
+
     public enum TypeGroup {
         SEGRETO, PUBBLICO;
     };
 
-    protected int id;
-    protected String nameGroup;
-    protected List<UtentiRegistrati> listaUtenti = new ArrayList<>();
-    protected TypeGroup tipoG;
+    private int id;
+    private String nameGroup;
+    private List<UtentiRegistrati> listaUtenti = new ArrayList<>();
+    private TypeGroup tipoG;
 
     public Gruppi() {
         id = 0;
-        nameGroup = " ";
-
+        nameGroup ="";
         tipoG = TypeGroup.PUBBLICO;
     }
-
-    /**
+    
+        /**
      * @return the id
      */
     public int getId() {
@@ -42,28 +42,50 @@ public class Gruppi {
     /**
      * @return the nameGroup
      */
-    public String getNomeG() {
+    public String getNameGroup() {
         return nameGroup;
     }
 
     /**
-     * @param nameGroup nome del gruppo
+     * @param nameGroup the nameGroup to set
      */
-    public void setNomeG(String nameGroup) {
+    public void setNameGroup(String nameGroup) {
         this.nameGroup = nameGroup;
     }
 
-    public TypeGroup getType() {
+    /**
+     * @return the listaUtenti
+     */
+    public List<UtentiRegistrati> getListaUtenti() {
+        return listaUtenti;
+    }
+
+    /**
+     * @param listaUtenti the listaUtenti to set
+     */
+    public void setListaUtenti(List<UtentiRegistrati> listaUtenti) {
+        this.listaUtenti = listaUtenti;
+    }
+
+    /**
+     * @return the tipoG
+     */
+    public TypeGroup getTipoG() {
         return tipoG;
     }
 
-    public void setType(TypeGroup tipoG) {
+    /**
+     * @param tipoG the tipoG to set
+     */
+    public void setTipoG(TypeGroup tipoG) {
         this.tipoG = tipoG;
     }
 
+    
+
     public void stampaListaUt() {
-        this.listaUtenti.forEach((i) -> {
-            System.out.println(i.nomeUtente);
+        this.getListaUtenti().forEach((i) -> {
+            System.out.println(i.getNomeUtente());
         });
     }
 
@@ -73,13 +95,13 @@ public class Gruppi {
      */
     public void aggiungi(UtentiRegistrati utenti) {
 
-        this.listaUtenti.add(utenti);
+        this.getListaUtenti().add(utenti);
 
     }
 
     public void aggiungi(List<UtentiRegistrati> lista) {
         lista.forEach((i) -> {
-            this.listaUtenti.add(i);
+            this.getListaUtenti().add(i);
         });
     }
 

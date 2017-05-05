@@ -18,19 +18,23 @@
     <body>
         <c:set var="title" value="Bacheca Personale" scope="request"/>
         <jsp:include page="header.jsp"/>
-
         <jsp:include page="latosx.jsp"/>
 
 
+
+
         <div class="bacheca">
+            
+            <jsp:include page="newpost.jsp"/>
+            
             <!--            Ciclo per poter visualizzare i post del singolo utene o di altri utenti, dove vengono richiamati nome, cognome, immagine visualizzata in piccolo e post-->
 
             <div id="posts"
                  <c:forEach var="post" items="${posts}">
                      <div class="post">
-                         <div id="${post.utente.nome}" class="profilo">
-                             <img title="profilo${post.utente.nome}" alt="Foto${post.utente.nome}" src="${post.utente.url}" >
-                             <h2><a href="#indirizzo_profilo">${post.utente.nome} ${post.utente.cognome} </a></h2>
+                         <div id="${post.utente.nomeUtente}" class="profilo">
+                             <img title="profilo${post.utente.nomeUtente}" alt="Foto${post.utente.nomeUtente}" src="${post.utente.url}" >
+                             <h2><a href="#indirizzo_profilo">${post.utente.nomeUtente} ${post.utente.cognomeUtente} </a></h2>
                          </div>
                          <div class="post_testo">
                              <c:if test="${not empty post.image}"><img title="im" alt="imm"

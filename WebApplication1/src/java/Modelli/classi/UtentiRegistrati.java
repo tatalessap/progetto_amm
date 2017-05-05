@@ -7,7 +7,7 @@ package Modelli.classi;
 public class UtentiRegistrati {
 
     private int personalID;
-    String nomeUtente;
+    private String nomeUtente;
     private String cognomeUtente;
     private String url;
     private String biografia;
@@ -27,43 +27,15 @@ public class UtentiRegistrati {
     /**
      * @return the personalID
      */
-    public int getpersonalID() {
+    public int getPersonalID() {
         return personalID;
     }
 
     /**
      * @param ID the id to set
      */
-    public void setID(int ID) {
+    public void setPersonalID(int ID) {
         this.personalID = ID;
-    }
-
-    /**
-     * @return the nomeUtente
-     */
-    public String getNome() {
-        return nomeUtente;
-    }
-
-    /**
-     * @param nomeUtente the nome to set
-     */
-    public void setNome(String nomeUtente) {
-        this.nomeUtente = nomeUtente;
-    }
-
-    /**
-     * @return the cognomeUtente
-     */
-    public String getCognome() {
-        return cognomeUtente;
-    }
-
-    /**
-     * @param cognomeUtente cognome
-     */
-    public void setCognome(String cognomeUtente) {
-        this.cognomeUtente = cognomeUtente;
     }
 
     /**
@@ -111,19 +83,49 @@ public class UtentiRegistrati {
     /**
      * @return password
      */
-    public String getPassw() {
+    public String getPassword() {
         return password;
     }
 
     /**
      * @param password pass profilo
      */
-    public void setPassw(String password) {
+    public void setPassword(String password) {
         this.password = password;
+    }
+    
+    
+
+    /**
+     * @return the nomeUtente
+     */
+    public String getNomeUtente() {
+        return nomeUtente;
+    }
+
+    /**
+     * @param nomeUtente the nomeUtente to set
+     */
+    public void setNomeUtente(String nomeUtente) {
+        this.nomeUtente = nomeUtente;
+    }
+
+    /**
+     * @return the cognomeUtente
+     */
+    public String getCognomeUtente() {
+        return cognomeUtente;
+    }
+
+    /**
+     * @param cognomeUtente the cognomeUtente to set
+     */
+    public void setCognomeUtente(String cognomeUtente) {
+        this.cognomeUtente = cognomeUtente;
     }
 
     public boolean controlloprofilo(UtentiRegistrati utente) {
-        if (utente.getNome().equals("") || utente.getCognome().equals("") || utente.getDataNascita().equals("")
+        if (utente.getNomeUtente().equals("") || utente.getCognomeUtente().equals("") || utente.getDataNascita().equals("")
                 || utente.getUrl().equals("") || utente.getBiografia().equals("")) {
             return false;
         } else {

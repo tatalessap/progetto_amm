@@ -1,4 +1,5 @@
 package Modelli.classi;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,20 +27,20 @@ public class GruppiFactory {
         //creazione Gruppo1
         Gruppi gruppo1 = new Gruppi();
         gruppo1.setId(1);
-        gruppo1.setNomeG("Chi stava guardando la melevisione l'undici settembre");
-        gruppo1.setType(Gruppi.TypeGroup.PUBBLICO);
+        gruppo1.setNameGroup("Chi stava guardando la melevisione l'undici settembre");
+        gruppo1.setTipoG(Gruppi.TypeGroup.PUBBLICO);
 
         //creazione Gruppo2
         Gruppi gruppo2 = new Gruppi();
         gruppo2.setId(2);
-        gruppo2.setNomeG("X chi vuole partire a Milano per Natale");
-        gruppo2.setType(Gruppi.TypeGroup.PUBBLICO);
+        gruppo2.setNameGroup("X chi vuole partire a Milano per Natale");
+        gruppo2.setTipoG(Gruppi.TypeGroup.PUBBLICO);
 
         //creazione Gruppo3
         Gruppi gruppo3 = new Gruppi();
         gruppo3.setId(3);
-        gruppo3.setNomeG("SettePugnalate: il locale");
-        gruppo3.setType(Gruppi.TypeGroup.PUBBLICO);
+        gruppo3.setNameGroup("Set...");
+        gruppo3.setTipoG(Gruppi.TypeGroup.PUBBLICO);
 
         listaGruppi.add(gruppo1);
         listaGruppi.add(gruppo2);
@@ -57,7 +58,7 @@ public class GruppiFactory {
 
     public Gruppi getGruppiByNome(String nome) {
         for (Gruppi gruppo : this.listaGruppi) {
-            if (gruppo.getNomeG() == nome) {
+            if (gruppo.getNameGroup() == nome) {
                 return gruppo;
             }
         }
@@ -65,7 +66,8 @@ public class GruppiFactory {
     }
 
     public ArrayList<Gruppi> getGruppi() {
-        return listaGruppi;
+        return this.listaGruppi;
+
     }
 
 }

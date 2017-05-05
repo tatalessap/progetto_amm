@@ -25,39 +25,39 @@ public class UtentiRegistratiFactory {
         //creazione utenti
         //creazione utente incompleto
         UtentiRegistrati utente0 = new UtentiRegistrati();
-        utente0.setID(0);
-        utente0.setNome("Incompleto");
-        utente0.setPassw("q");
+        utente0.setPersonalID(0);
+        utente0.setNomeUtente("Incompleto");
+        utente0.setPassword("q");
 
         //creazione Mark Zuckerberg
         UtentiRegistrati utente1 = new UtentiRegistrati();
-        utente1.setID(1);
-        utente1.setNome("Mark");
-        utente1.setCognome("Zuckerberg");
+        utente1.setPersonalID(1);
+        utente1.setNomeUtente("Mark");
+        utente1.setCognomeUtente("Zuckerberg");
         utente1.setBiografia("fondatore");
         utente1.setDataNascita("00/00/00");
         utente1.setUrl("img/Mark.jpg");
-        utente1.setPassw("q");
+        utente1.setPassword("q");
 
         //creazione Hack Rino
         UtentiRegistrati utente2 = new UtentiRegistrati();
-        utente2.setID(2);
-        utente2.setNome("Hack");
-        utente2.setCognome("Rino");
+        utente2.setPersonalID(2);
+        utente2.setNomeUtente("Hack");
+        utente2.setCognomeUtente("Rino");
         utente2.setBiografia("Hacker di fama mondiale");
         utente2.setDataNascita("00/00/00");
         utente2.setUrl("img/picHacherino.jpg");
-        utente2.setPassw("q");
+        utente2.setPassword("q");
 
         //creazione Jon Sudano
         UtentiRegistrati utente3 = new UtentiRegistrati();
-        utente3.setID(3);
-        utente3.setNome("Jon");
-        utente3.setCognome("Sudano");
+        utente3.setPersonalID(3);
+        utente3.setNomeUtente("Jon");
+        utente3.setCognomeUtente("Sudano");
         utente3.setBiografia("cantante");
         utente3.setDataNascita("00/00/00");
         utente3.setUrl("img/jonsudano.jpg");
-        utente3.setPassw("q");
+        utente3.setPassword("q");
 
         listaUtenti.add(utente0);
         listaUtenti.add(utente1);
@@ -68,7 +68,7 @@ public class UtentiRegistratiFactory {
 
     public UtentiRegistrati getUtentiRegistratiById(int id) {
         for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getpersonalID() == id) {
+            if (utente.getPersonalID() == id) {
                 return utente;
             }
         }
@@ -77,7 +77,7 @@ public class UtentiRegistratiFactory {
 
     public UtentiRegistrati getUtentiRegistratiByNome(String nome) {
         for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getNome() == nome) {
+            if (utente.getNomeUtente() == nome) {
                 return utente;
             }
         }
@@ -86,7 +86,7 @@ public class UtentiRegistratiFactory {
 
     public UtentiRegistrati getUtentiRegistratiByCognome(String cognome) {
         for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getCognome() == cognome) {
+            if (utente.getCognomeUtente() == cognome) {
                 return utente;
             }
         }
@@ -95,8 +95,8 @@ public class UtentiRegistratiFactory {
 
     public int getIdByUserAndPassword(String user, String password) {
         for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getNome().equals(user) && utente.getPassw().equals(password)) {
-                return utente.getpersonalID();
+            if (utente.getNomeUtente().equals(user) && utente.getPassword().equals(password)) {
+                return utente.getPersonalID();
             }
         }
         return -1;
@@ -105,7 +105,7 @@ public class UtentiRegistratiFactory {
     public boolean controlloprofilo(int loggedUserID) {
 
         for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getpersonalID() == loggedUserID) {
+            if (utente.getPersonalID() == loggedUserID) {
                 if (utente.controlloprofilo(utente) == true) {
                     return true;
                 }

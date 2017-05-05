@@ -2,6 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+
 <html>
     <head>
         <title>Profilo</title>
@@ -19,6 +20,7 @@
         <jsp:include page="header.jsp"/>
         <jsp:include page="latosx.jsp"/>
 
+
         <div class="Pic">
             <img title="profiloTenente" alt="FotoDiTenente"
                  src="img/tenente_colombo.jpg" width="450" height="325">
@@ -30,18 +32,18 @@
                 <div id="datiutente"> 
                     <div class="textareaa">
                         <!--                        inserimento dei dati dell'utente tramite Servlet-->
-                        <label for="nome">Nome:</label>
-                        <input type="text" name="nome" placeholder="Inserisci il tuo nome"
-                               id="nome"
+                        <label for="nomeUtente">Nome:</label>
+                        <input type="text" name="nomeUtente" placeholder="Inserisci il tuo nome"
+                               id="nomeUtente"
                                <c:if test="${not empty nome}">value="${nome}"</c:if>
-                               <c:if test="${not empty utente.nome}">value="${utente.nome}"</c:if>>
+                               <c:if test="${not empty utente.nomeUtente}">value="${utente.nomeUtente}"</c:if>>
                         </div>
                         <div class="textareaa">
                             <label for="cognome">Cognome:</label>
                             <input type="text" name="cognome" placeholder="Inserisci il tuo cognome"
                                    id="cognome"
                             <c:if test="${not empty cognome}">value="${cognome}"</c:if>
-                            <c:if test="${not empty utente.cognome}">value="${utente.cognome}"</c:if>>
+                            <c:if test="${not empty utente.cognomeUtente}">value="${utente.cognomeUtente}"</c:if>>
 
                         </div>
 
@@ -50,7 +52,7 @@
                             <input type="text" name="immagine" placeholder="Inserisci URL della tua immagine"
                                    id="immagine"
                             <c:if test="${not empty immagine}">value="${immagine}"</c:if>
-                            <c:if test="${not empty utente.immagine}">value="${utente.immagine}"</c:if>>
+                            <c:if test="${not empty utente.url}">value="${utente.url}"</c:if>>
 
                         </div>
                         <!--Descrizione personale utente-->
@@ -59,7 +61,7 @@
                             <input type="text" name="fraseDescrizione" placeholder="Inserisci la tua biografia"
                                    id="fraseDescrizione"
                             <c:if test="${not empty fraseDescrizione}">value="${fraseDescrizione}"</c:if>
-                            <c:if test="${not empty utente.fraseDescrizione}">value="${utente.fraseDescrizione}"</c:if>>
+                            <c:if test="${not empty utente.biografia}">value="${utente.biografia}"</c:if>>
 
 
                             </textarea>
@@ -70,7 +72,7 @@
                             <input type="date" name="date" placeholder="Data di nascita:"
                                    id="date"
                             <c:if test="${not empty date}">value="${date}"</c:if>
-                            <c:if test="${not empty utente.date}">value="${utente.date}"</c:if>>
+                            <c:if test="${not empty utente.dataNascita}">value="${utente.dataNascita}"</c:if>>
 
                         </div>
                         <div class="textareaa">
@@ -79,17 +81,20 @@
                                    id="password"
                             <c:if test="${not empty password}">value="${password}"</c:if>
                             <c:if test="${not empty utente.password}">value="${utente.password}"</c:if>>
+                        </div>
+                        <div class="textareaa">
+                            <label for="Confermapassword">Conferma password:</label>
+                            <input type="password" name="Confermapswd" placeholder="Conferma la tua password"
+                                   id="Confermapassword" />
+                        </div>
                     </div>
-                    <div class="textareaa">
-                        <label for="Confermapassword">Conferma password:</label>
-                        <input type="password" name="Confermapswd" placeholder="Conferma la tua password"
-                               id="Confermapassword" />
-                    </div>
-                </div>
-                <!--pulsante per l'aggiornamento dei dati-->
-                <div id="aggiorna"> <input type="submit" value="Aggiorna"/> </div>
+                    <!--pulsante per l'aggiornamento dei dati-->
+                    <div id="aggiorna"> <input type="submit" value="Aggiorna"/> </div>
 
-            </form>  
-        </div>
+
+
+                </form>  
+            </div>
+        <c:if test="${salva != null}"> <h2>conferma dati inviati</h2> </c:if>
     </body>
 </html>
