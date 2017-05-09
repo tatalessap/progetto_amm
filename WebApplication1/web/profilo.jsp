@@ -58,7 +58,7 @@
                         <!--Descrizione personale utente-->
                         <div class="textareaa">
                             <label for="fraseDescrizione">Inserisci la tua biografia:</label>
-                            <input type="text" name="fraseDescrizione" placeholder="Inserisci la tua biografia"
+                            <input type="textarea" name="fraseDescrizione" placeholder="Inserisci la tua biografia"
                                    id="fraseDescrizione"
                             <c:if test="${not empty fraseDescrizione}">value="${fraseDescrizione}"</c:if>
                             <c:if test="${not empty utente.biografia}">value="${utente.biografia}"</c:if>>

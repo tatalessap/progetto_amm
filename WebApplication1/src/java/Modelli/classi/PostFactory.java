@@ -72,5 +72,19 @@ public class PostFactory {
         }
         return listaPost;
     }
+    
+    public List getPostListByIdUtente (int id) {
+        
+         List<Post> listaPost = new ArrayList<Post>();
+         
+         for (Post post : this.listaPost) {
+            if (post.getIdUtenteCreatore()==id) {
+                listaPost.add(post);
+            }
+        }
+        return listaPost;
+         
+        }
+    
 
 }

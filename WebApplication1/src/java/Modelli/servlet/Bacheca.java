@@ -59,10 +59,16 @@ public class Bacheca extends HttpServlet {
         
         List<UtentiRegistrati> listaUtenti = UtentiRegistratiFactory.getInstance().getUtenti();
         request.setAttribute("listaUtenti", listaUtenti);
-              
+              if(request.getParameter("bachecadiversa")!=null) {
+                  String temporanea =  request.getParameter("bachecadiversa");
+                  int temporaneaIntero =  Integer.parseInt(temporanea);
+                  List<Post> posts = PostFactory.getInstance().getPostListByIdUtente(temporaneaIntero);
+                  request.setAttribute("posts", posts);
+              }else{
 //          preparazione lista utente per poi passarlo alla JSP per la visualizzazione
                 List<Post> posts = PostFactory.getInstance().getPostList(utente);
                 request.setAttribute("posts", posts);
+              }
 //          dopo aver effettuato il login, l'utente viene rimandanto nella bacheca
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
             } else {
