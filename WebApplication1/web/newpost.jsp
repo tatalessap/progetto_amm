@@ -18,7 +18,7 @@
             
             <div class="inserimentopost">
                 
-                <form action="nuovopost" method="post">
+                <form action="Bacheca?nuovopost=true" method="post">
                     
                     <div class="blocco1">
                         <label for="content">Inserisci il testo:</label>
@@ -42,9 +42,12 @@
                                 <c:if test="${not empty post.image}"> value="${post.image}"</c:if>>
                         </div>
                     </div>
+                        
+                        <div id="aggiorna"> <input type="submit" value="Conferma"/> </div>
 
                 </form>
             </div>
+                        
 
         </div>
 

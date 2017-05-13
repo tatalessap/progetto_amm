@@ -31,6 +31,14 @@ public class Bacheca extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
+        
+        if(request.getParameter("nuovopost")!=null){
+                    String content = request.getParameter("content");
+                    request.setAttribute("content", content);
+                    
+                    String image = request.getParameter("image");
+                    request.setAttribute("image", image);
+            }
 
 //          l'attributo loggeIn è impostato a true se la sessione esiste
         if (session != null
@@ -78,6 +86,8 @@ public class Bacheca extends HttpServlet {
             //se non è loggato verrà mandato nella pagina errore
             request.getRequestDispatcher("MexError.jsp").forward(request, response);
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

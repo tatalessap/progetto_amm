@@ -615,6 +615,42 @@
         margin-left: 0%;
     }
     
+    .nuovopost {
+        display: inline-block;
+        margin-left: 9px;
+        padding-bottom: 12px;
+        border: 5px;
+        border: solid;
+        border-color:#cccccc;
+        width: 96%;
+        margin-top: 0px;
+    }
+    
+    .nuovopost .blocco h2 {
+        margin-top: 2px;
+        display: inline-block;   
+    }
+    
+    .nuovopost .blocco {
+        width: 100%;
+    }
+    
+    .nuovopost .blocco .inserimentopost .blocco1 {
+        padding-bottom: 10px;
+        padding-left: 10px;
+        float: left;
+        width: 100%;
+    }
+    
+    .nuovopost .blocco .inserimentopost .blocco1 .blocco2 {
+        float: right;
+        margin-top: -10px;
+        margin-left: 20px;
+        padding-bottom: 10px;
+        width: 70%;
+
+    }
+    
 }
 
 @media only screen and (max-width: 480px) {
@@ -917,6 +953,42 @@
 
     .login_profilo form #aggiorna input {
             width: 98.70%;
+    }
+    
+    .nuovopost {
+        display: inline-block;
+        margin-left: 9px;
+        padding-bottom: 12px;
+        border: 5px;
+        border: solid;
+        border-color:#cccccc;
+        width: 96%;
+        margin-top: 0px;
+    }
+    
+    .nuovopost .blocco h2 {
+        margin-top: 2px;
+        display: inline-block;   
+    }
+    
+    .nuovopost .blocco {
+        width: 100%;
+    }
+    
+    .nuovopost .blocco .inserimentopost .blocco1 {
+        padding-bottom: 10px;
+        padding-left: 10px;
+        float: left;
+        width: 100%;
+    }
+    
+    .nuovopost .blocco .inserimentopost .blocco1 .blocco2 {
+        float: right;
+        margin-top: -10px;
+        margin-left: 20px;
+        padding-bottom: 10px;
+        width: 70%;
+
     }
     
 
