@@ -1,5 +1,10 @@
 package Modelli.classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,55 +24,154 @@ public class GruppiFactory {
         return singleton;
     }
 
-    private ArrayList<Gruppi> listaGruppi = new ArrayList<Gruppi>();
+   // private ArrayList<Gruppi> listaGruppi = new ArrayList<Gruppi>();
+    
+    private String connectionString;
+    
+    public void setConnectionString(String s) {
+        this.connectionString = s;
+    }
+
+    public String getConnectionString() {
+        return this.connectionString;
+    }
 
     private GruppiFactory() {
-        //creazione gruppi
-
-        //creazione Gruppo1
-        Gruppi gruppo1 = new Gruppi();
-        gruppo1.setId(1);
-        gruppo1.setNameGroup("Chi stava guardando la melevisione l'undici settembre");
-        gruppo1.setTipoG(Gruppi.TypeGroup.PUBBLICO);
-
-        //creazione Gruppo2
-        Gruppi gruppo2 = new Gruppi();
-        gruppo2.setId(2);
-        gruppo2.setNameGroup("X chi vuole partire a Milano per Natale");
-        gruppo2.setTipoG(Gruppi.TypeGroup.PUBBLICO);
-
-        //creazione Gruppo3
-        Gruppi gruppo3 = new Gruppi();
-        gruppo3.setId(3);
-        gruppo3.setNameGroup("Set...");
-        gruppo3.setTipoG(Gruppi.TypeGroup.PUBBLICO);
-
-        listaGruppi.add(gruppo1);
-        listaGruppi.add(gruppo2);
-        listaGruppi.add(gruppo3);
     }
 
     public Gruppi getGruppiById(int id) {
-        for (Gruppi gruppo : this.listaGruppi) {
-            if (gruppo.getId() == id) {
-                return gruppo;
+        //ripescaggio Gruppi
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "tata", "tata"); //username e password del database
+
+            String query
+                    = " select * from gruppi " //lasciare uno spazio tra la fine dell'ultima per la concatenazione
+                    + " where id_gruppi = ? ";
+            String query2
+                    = "select * from listaUtentiGroup" +
+                    "join id_listaUtenti on listaUtentiGroup.id_listaUtenti=id_gruppi "
+                    + " where id_listaUtenti = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            PreparedStatement stmt2 = conn.prepareStatement(query2);
+
+            stmt.setInt(1, id);
+            stmt2.setInt(2, id);
+           
+            ResultSet res = stmt.executeQuery();
+            ResultSet res2 = stmt2.executeQuery();
+
+            if (res.next()) {
+                Gruppi current = new Gruppi();
+                
+                current.setId(res.getInt("id_gruppi"));
+                current.setIdUtenteProprietario(res.getInt("idUtenteProprietario"));
+                current.setNameGroup(res.getString("nomeGroup"));
+                
+                current.setId(res2.getInt("id_listaUtenti"));
+                
+                
+                stmt.close();
+                conn.close();
+                stmt2.close();
+                conn.close();
+                return current;
+
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return null;
     }
 
+    
     public Gruppi getGruppiByNome(String nome) {
-        for (Gruppi gruppo : this.listaGruppi) {
-            if (gruppo.getNameGroup() == nome) {
-                return gruppo;
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "tata", "tata"); //username e password del database
+
+            String query
+                    = " select * from gruppi " //lasciare uno spazio tra la fine dell'ultima per la concatenazione
+                    + " where nomeGroup = ? ";
+            String query2
+                    = "select * from listaUtentiGroup " +
+                    "join id_listaUtenti on listaUtentiGroup.id_listaUtenti=id_gruppi " 
+                    + " where id_listaUtenti = ? ";
+            
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            PreparedStatement stmt2 = conn.prepareStatement(query2);
+
+            stmt.setString(1, nome);
+            stmt2.setString(2, nome);
+           
+            ResultSet res = stmt.executeQuery();
+            ResultSet res2 = stmt2.executeQuery();
+
+            if (res.next()) {
+                Gruppi current = new Gruppi();
+                
+                current.setId(res.getInt("id_gruppi"));
+                current.setIdUtenteProprietario(res.getInt("idUtenteProprietario"));
+                current.setNameGroup(res.getString("nomeGroup"));
+                
+                current.setId(res2.getInt("id_listaUtenti"));
+                
+                
+                stmt.close();
+                conn.close();
+                stmt2.close();
+                conn.close();
+                
+                return current;
+
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return null;
+        
     }
 
     public ArrayList<Gruppi> getGruppi() {
-        return this.listaGruppi;
+        
+       ArrayList<Gruppi> listaGruppi = new ArrayList<>();
+            try {
+            Connection conn = DriverManager.getConnection(connectionString, "tata", "tata"); //username e password del database
+
+           String query
+                    = " select * from gruppi " ; //lasciare uno spazio tra la fine dell'ultima per la concatenazione
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+                
+                Gruppi current = new Gruppi();
+                
+                current.setId(res.getInt("id_gruppi"));
+                current.setIdUtenteProprietario(res.getInt("idUtenteProprietario"));
+                current.setNameGroup(res.getString("nomeGroup"));
+
+                listaGruppi.add(current);
+                
+            }
+            
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+            
+            return listaGruppi;
+
 
     }
-
+    
+    
+    
 }

@@ -1,6 +1,12 @@
 package Modelli.classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,120 +23,221 @@ public class UtentiRegistratiFactory {
         }
         return singleton;
     }
+    
+    private String connectionString;
+
+    public void setConnectionString(String s) {
+        this.connectionString = s;
+    }
+
+    public String getConnectionString() {
+        return this.connectionString;
+    }
 
     private ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
 
     private UtentiRegistratiFactory() {
-
-        //creazione utenti
-        //creazione utente incompleto
-        UtentiRegistrati utente0 = new UtentiRegistrati();
-        utente0.setPersonalID(0);
-        utente0.setNomeUtente("Incompleto");
-        utente0.setPassword("q");
-
-        //creazione Mark Zuckerberg
-        UtentiRegistrati utente1 = new UtentiRegistrati();
-        utente1.setPersonalID(1);
-        utente1.setNomeUtente("Mark");
-        utente1.setCognomeUtente("Zuckerberg");
-        utente1.setBiografia("fondatore");
-        utente1.setDataNascita("00/00/00");
-        utente1.setUrl("img/Mark.jpg");
-        utente1.setPassword("q");
-
-        //creazione Hack Rino
-        UtentiRegistrati utente2 = new UtentiRegistrati();
-        utente2.setPersonalID(2);
-        utente2.setNomeUtente("Hack");
-        utente2.setCognomeUtente("Rino");
-        utente2.setBiografia("Hacker di fama mondiale");
-        utente2.setDataNascita("00/00/00");
-        utente2.setUrl("img/picHacherino.jpg");
-        utente2.setPassword("q");
-
-        //creazione Jon Sudano
-        UtentiRegistrati utente3 = new UtentiRegistrati();
-        utente3.setPersonalID(3);
-        utente3.setNomeUtente("Jon");
-        utente3.setCognomeUtente("Sudano");
-        utente3.setBiografia("cantante");
-        utente3.setDataNascita("00/00/00");
-        utente3.setUrl("img/jonsudano.jpg");
-        utente3.setPassword("q");
-
-        listaUtenti.add(utente0);
-        listaUtenti.add(utente1);
-        listaUtenti.add(utente2);
-        listaUtenti.add(utente3);
-
     }
 
+    ;
+    
     public UtentiRegistrati getUtentiRegistratiById(int id) {
-        for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getPersonalID() == id) {
-                return utente;
-            }
-        }
-        return null;
-    }
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "tata", "tata"); //username e password del database
 
-    public UtentiRegistrati getUtentiRegistratiByNome(String nome) {
-        for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getNomeUtente() == nome) {
-                return utente;
-            }
-        }
-        return null;
-    }
+            String query
+                    = "select * from utentiRegistrati " //lasciare uno spazio tra la fine dell'ultima per la concatenazione
+                    + "where personalID = ?";
 
-    public UtentiRegistrati getUtentiRegistratiByCognome(String cognome) {
-        for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getCognomeUtente() == cognome) {
-                return utente;
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setInt(1, id);
+
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                UtentiRegistrati current = new UtentiRegistrati();
+
+                current.setPersonalID(res.getInt("personalID"));
+                current.setNomeUtente(res.getString("nomeUtente"));
+                current.setCognomeUtente(res.getString("cognomeUtente"));
+                current.setUrl(res.getString("url"));
+                current.setBiografia(res.getString("biografia"));
+                current.setDataNascita(res.getString("dataNascita"));
+                current.setPassword(res.getString("password"));
+
+                stmt.close();
+                conn.close();
+
+                return current;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return null;
     }
 
     public int getIdByUserAndPassword(String user, String password) {
-        for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getNomeUtente().equals(user) && utente.getPassword().equals(password)) {
-                return utente.getPersonalID();
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "tata", "tata"); //username e password del database
+
+            String query
+                    = "select * from utentiRegistrati " //lasciare uno spazio tra la fine dell'ultima per la concatenazione
+                    + "where nomeUtente = ? and password = ? ";
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setString(1, user);
+            stmt.setString(2, password);
+
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                int id = res.getInt("personalID");
+
+                stmt.close();
+                conn.close();
+                return id;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return -1;
     }
 
-    public boolean controlloprofilo(int loggedUserID) {
+    
+    public boolean controlloprofilo(int loggerUserID) {
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "tata", "tata"); //username e password del database
 
-        for (UtentiRegistrati utente : this.listaUtenti) {
-            if (utente.getPersonalID() == loggedUserID) {
-                if (utente.controlloprofilo(utente) == true) {
-                    return true;
-                }
+            String query
+                    = "select * from utentiRegistrati " //lasciare uno spazio tra la fine dell'ultima per la concatenazione
+                    + "where personalID= ?";
 
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setInt(1, loggerUserID);
+
+            ResultSet res = stmt.executeQuery();
+
+            if (res.next()) {
+                if(loggerUserID==res.getInt("personalID"));
+
+                stmt.close();
+                conn.close();
+                return true;
             }
 
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
+        
         return false;
-
-    }
-
-    public ArrayList<UtentiRegistrati> getUtenti(UtentiRegistrati utenteloggato) {
-        ArrayList<UtentiRegistrati> nuovalista = new ArrayList<UtentiRegistrati>();
-        for (UtentiRegistrati utente : this.listaUtenti) {
-            if (!(utente.equals(utenteloggato))) {
-                nuovalista.add(utente);
-            }
-        }
-        return nuovalista;
     }
 
     public ArrayList<UtentiRegistrati> getUtenti() {
+                
+       ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<>();
+            try {
+            Connection conn = DriverManager.getConnection(connectionString, "tata", "tata"); //username e password del database
 
-        return this.listaUtenti;
+           String query
+                    = " select * from utentiRegistrati " ; //lasciare uno spazio tra la fine dell'ultima per la concatenazione
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            ResultSet res = stmt.executeQuery();
+
+            while (res.next()) {
+                
+                UtentiRegistrati current = new UtentiRegistrati();
+                
+                current.setPersonalID(res.getInt("personalID"));
+                current.setNomeUtente(res.getString("nomeUtente"));
+                current.setCognomeUtente(res.getString("cognomeUtente"));
+                current.setUrl(res.getString("url"));
+                current.setBiografia(res.getString("biografia"));
+                current.setDataNascita(res.getString("dataNascita"));
+                current.setPassword(res.getString("password"));
+                
+                listaUtenti.add(current);
+                
+            }
+            
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+            
+        return listaUtenti;
     }
+    
+    public void deleteUtente (UtentiRegistrati utente) {
+        
+        String query;
+        PreparedStatement stmt;
+        Connection conn;
+        
+
+            try {
+                
+            conn = DriverManager.getConnection(connectionString, "tata", "tata");
+           
+//             //cancello le amicizie con altri utenti
+//            query = " delete from amicizie " + " where utente1 = ? or utente2 = ? ";
+//            stmt = conn.prepareStatement(query);
+//            stmt.setInt(1, utente.getPersonalID());
+//            stmt.setInt(2, utente.getPersonalID());
+//            stmt.executeUpdate();
+//            
+//            //cancello l'utente dai gruppi seguiti
+//            query  = " delete from listaUtentiGroup " + " where utenteGroup = ? ";
+//            stmt = conn.prepareStatement(query);
+//            stmt.setInt(1, utente.getPersonalID());
+//            stmt.executeUpdate();
+//            
+//            
+//            //cancello l'utente dai gruppi 
+//            query  = " delete from gruppi " + " where idUtenteProprietario = ? ";
+//            stmt = conn.prepareStatement(query);
+//            stmt.setInt(1, utente.getPersonalID());
+//            stmt.executeUpdate();
+//            
+            query = " delete from utentiRegistrati " + " where personalID = ? ";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, utente.getPersonalID());
+            stmt.executeUpdate();
+            
+
+//            //cancello l'utente dai gruppi 
+//            query  = " delete from gruppi " + " where idUtenteProprietario = ? ";
+//            stmt = conn.prepareStatement(query);
+//            stmt.setInt(1, utente.getPersonalID());
+//            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+            }
+    }
+
+
 
 }

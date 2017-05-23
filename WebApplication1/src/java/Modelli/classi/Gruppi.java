@@ -10,19 +10,23 @@ import java.util.List;
 public class Gruppi {
 
 
-    public enum TypeGroup {
-        SEGRETO, PUBBLICO;
-    };
-
     private int id;
     private String nameGroup;
+    private int idUtenteProprietario;
     private List<UtentiRegistrati> listaUtenti = new ArrayList<>();
-    private TypeGroup tipoG;
 
     public Gruppi() {
         id = 0;
         nameGroup ="";
-        tipoG = TypeGroup.PUBBLICO;
+        idUtenteProprietario = 0;
+    }
+    
+    public int getIdUtenteProprietario() {
+        return idUtenteProprietario;
+    }
+
+    public void setIdUtenteProprietario(int idUtenteProprietario) {
+        this.idUtenteProprietario = idUtenteProprietario;
     }
     
         /**
@@ -66,23 +70,7 @@ public class Gruppi {
     public void setListaUtenti(List<UtentiRegistrati> listaUtenti) {
         this.listaUtenti = listaUtenti;
     }
-
-    /**
-     * @return the tipoG
-     */
-    public TypeGroup getTipoG() {
-        return tipoG;
-    }
-
-    /**
-     * @param tipoG the tipoG to set
-     */
-    public void setTipoG(TypeGroup tipoG) {
-        this.tipoG = tipoG;
-    }
-
     
-
     public void stampaListaUt() {
         this.getListaUtenti().forEach((i) -> {
             System.out.println(i.getNomeUtente());

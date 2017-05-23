@@ -15,7 +15,7 @@
             <ul>
                 <c:forEach var="listaUt" items="${listaUtenti}">                
                     <li>
-                        <a href="bacheca.html?bachecadiversa=${listaUt.personalID}" > ${listaUt.nomeUtente} </a> 
+                        <a href="bacheca.html?bachecadiversa=${listaUt.personalID}" > ${listaUt.nomeUtente} ${listaUt.cognomeUtente} </a> 
                        
                     </li>                
                 </c:forEach>

@@ -19,19 +19,16 @@
         <c:set var="title" value="Bacheca Personale" scope="request"/>
         <jsp:include page="header.jsp"/>
         <jsp:include page="latosx.jsp"/>
-        
- 
-
-
-
 
         <div class="bacheca">
+            <div class="post">
+                <p>${post.utente.biografia}</p>
+            </div>
             <div class="nuovopost">
-                <jsp:include page="newpost.jsp"/>
+                <jsp:include page="nuovopost.jsp"/>
             </div>
                    
             <!--            Ciclo per poter visualizzare i post del singolo utene o di altri utenti, dove vengono richiamati nome, cognome, immagine visualizzata in piccolo e post-->
-
             <div id="posts">
                  <c:forEach var="post" items="${posts}">
                      <div class="post">
@@ -40,8 +37,8 @@
                              <h2><a href="#indirizzo_profilo">${post.utente.nomeUtente} ${post.utente.cognomeUtente} </a></h2>
                          </div>
                          <div class="post_testo">
-                             <c:if test="${not empty post.image}"><img title="im" alt="imm"
-                                  src="${post.image}" > </c:if>
+                             <c:if test="${not empty post.allegato}"><img title="im" alt="imm"
+                                  src="${post.allegato}" > </c:if>
                              <p>${post.content}</p>
                          </div>
                      </div>

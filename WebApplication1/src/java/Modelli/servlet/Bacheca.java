@@ -32,13 +32,13 @@ public class Bacheca extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
         
-        if(request.getParameter("nuovopost")!=null){
-                    String content = request.getParameter("content");
-                    request.setAttribute("content", content);
-                    
-                    String image = request.getParameter("image");
-                    request.setAttribute("image", image);
-            }
+//        if(request.getParameter("nuovopost")!=null){
+//                    String content = request.getParameter("content");
+//                    request.setAttribute("content", content);
+//                    
+//                    String allegato = request.getParameter("allegato");
+//                    request.setAttribute("allegato", allegato);
+//            }
 
 //          l'attributo loggeIn è impostato a true se la sessione esiste
         if (session != null
@@ -67,6 +67,7 @@ public class Bacheca extends HttpServlet {
         
         List<UtentiRegistrati> listaUtenti = UtentiRegistratiFactory.getInstance().getUtenti();
         request.setAttribute("listaUtenti", listaUtenti);
+        
               if(request.getParameter("bachecadiversa")!=null) {
                   String temporanea =  request.getParameter("bachecadiversa");
                   int temporaneaIntero =  Integer.parseInt(temporanea);
@@ -74,7 +75,8 @@ public class Bacheca extends HttpServlet {
                   request.setAttribute("posts", posts);
               }else{
 //          preparazione lista utente per poi passarlo alla JSP per la visualizzazione
-                List<Post> posts = PostFactory.getInstance().getPostList(utente);
+//                List<Post> posts = PostFactory.getInstance().getPostList(utente);
+                List<Post> posts = PostFactory.getInstance().getPostListByIdUtente(userID);
                 request.setAttribute("posts", posts);
               }
 //          dopo aver effettuato il login, l'utente viene rimandanto nella bacheca

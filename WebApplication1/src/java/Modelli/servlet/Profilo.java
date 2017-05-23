@@ -27,6 +27,10 @@ public class Profilo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(false);
+        
+        
+        
+        
         if(request.getParameter("salva") != null)
             request.setAttribute("salva", true);
             
@@ -55,7 +59,23 @@ public class Profilo extends HttpServlet {
             }
             //"creazione" dell'utente e ricevimento delle info tramite id
             UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
+
+                
+                
+                
+            
             if (utente != null) {
+                if(request.getParameter("cancellaProfilo")!=null){
+                    PostFactory.getInstance().deletePostsBacheca(userID);
+                    UtentiRegistratiFactory.getInstance().deleteUtente(utente);
+                    session.invalidate();
+                    request.getRequestDispatcher("Login").forward(request, response);
+                 }
+                
+                if(request.getParameter("cancellaBacheca")!=null){
+                    PostFactory.getInstance().deletePostsBacheca(userID);
+                    request.getRequestDispatcher("Bacheca").forward(request, response);
+                 }
 
                 //inserimento dei dati
                 if (request.getParameter("salva") != null) {
@@ -69,8 +89,8 @@ public class Profilo extends HttpServlet {
                     String immagine = request.getParameter("immagine");
                     request.setAttribute("immagine", immagine);
                     
-                    String fraseDescrizione = request.getParameter("fraseDescrizione");
-                    request.setAttribute("fraseDescrizione", fraseDescrizione);
+                    String biografia = request.getParameter("biografia");
+                    request.setAttribute("biografia", biografia);
 
                     String date = request.getParameter("date");
                     request.setAttribute("date", date);
@@ -86,17 +106,19 @@ public class Profilo extends HttpServlet {
 
                 }
                 
-
                 request.getRequestDispatcher("profilo.jsp").forward(request, response);
             } else {
 
                 request.getRequestDispatcher("Login").forward(request, response);
             }
+            
 
         }
         //altrimenti messaggio di errore
         request.getRequestDispatcher("MexError.jsp").forward(request, response);
         //request.getRequestDispatcher("Login").forward(request, response);
+        
+        
 
     }
 

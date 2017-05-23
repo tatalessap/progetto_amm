@@ -6,23 +6,32 @@ package Modelli.classi;
  */
 public class Post {
 
-    public enum Type {
+    public enum PostType {
         POST_TESTO, POST_IMMAGINE,
     };
 
     protected int id;
     protected UtentiRegistrati utente;
     private String content;
-    private Type postType;
-    private String image;
+    private PostType postType;
+    private int idUtenteBacheca;
+    private String allegato;
 
     public Post() {
         id = 0;
         utente = null;
         content = "";
-        postType = Type.POST_TESTO;
-        image = "";
+        postType = PostType.POST_TESTO;
+        allegato = "";
 
+    }
+
+    public int getIdUtenteBacheca() {
+        return idUtenteBacheca;
+    }
+
+    public void setIdUtenteBacheca(int idUtenteBacheca) {
+        this.idUtenteBacheca = idUtenteBacheca;
     }
 
     /**
@@ -38,20 +47,17 @@ public class Post {
     public void setId(int id) {
         this.id = id;
     }
-
-    /**
-     * @return the image
-     */
-    public String getImage() {
-        return image;
+    
+    
+    public String getAllegato() {
+        return allegato;
     }
 
-    /**
-     * @param image the image to set
-     */
-    public void setImage(String image) {
-        this.image = image;
+    public void setAllegato(String allegato) {
+        this.allegato = allegato;
     }
+
+
 
     /**
      * @return utente
@@ -84,19 +90,19 @@ public class Post {
     /**
      * @return the postType
      */
-    public Type getPostType() {
+    public PostType getPostType() {
         return postType;
     }
 
     /**
      * @param postType the postType to set
      */
-    public void setPostType(Type postType) {
+    public void setPostType(PostType postType) {
         this.postType = postType;
     }
-    
-    public int getIdUtenteCreatore () {
-       return this.utente.getPersonalID();
+
+    public int getIdUtenteCreatore() {
+        return this.utente.getPersonalID();
     }
 
 }

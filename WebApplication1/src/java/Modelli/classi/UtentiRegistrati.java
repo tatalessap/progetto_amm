@@ -4,7 +4,15 @@ package Modelli.classi;
  *
  * @author marta_nga0hmy
  */
+
+
+
 public class UtentiRegistrati {
+
+      public enum UtenteType {
+        AMM, NORMAL,
+    };
+
 
     private int personalID;
     private String nomeUtente;
@@ -13,6 +21,8 @@ public class UtentiRegistrati {
     private String biografia;
     private String dataNascita;
     private String password;
+    private UtenteType utenteType;
+    
 
     public UtentiRegistrati() {
         this.personalID = -1;
@@ -22,7 +32,19 @@ public class UtentiRegistrati {
         this.biografia = "";
         this.dataNascita = "";
         this.password = "";
+        this.utenteType = UtenteType.NORMAL;
+        
     }
+    
+    
+    public UtenteType getUtenteType() {
+        return utenteType;
+    }
+
+    public void setUtenteType(UtenteType UtenteType) {
+        this.utenteType = UtenteType;
+    }
+    
 
     /**
      * @return the personalID

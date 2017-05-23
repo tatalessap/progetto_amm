@@ -5,11 +5,13 @@ package Modelli.servlet;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import Modelli.classi.UtentiRegistrati;
-import Modelli.classi.UtentiRegistratiFactory;
+import Modelli.classi.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +21,25 @@ import javax.servlet.http.HttpSession;
  *
  * @author marta_nga0hmy
  */
+@WebServlet(loadOnStartup = 0)
 public class Login extends HttpServlet {
+    
+    private static final String JDBC_DRIVER = "org.apache.derby.jdb.EmbreddedDriver";
+    private static final String DB_CLEAN_PATH ="../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH ="WEB-INF/db/ammdb";
+    
+    @Override
+   public void init(){
+       String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+       try {
+           Class.forName(JDBC_DRIVER);
+       } catch (ClassNotFoundException ex) {
+           Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       GruppiFactory.getInstance().setConnectionString(dbConnection);
+       PostFactory.getInstance().setConnectionString(dbConnection);
+       UtentiRegistratiFactory.getInstance().setConnectionString(dbConnection);
+   }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

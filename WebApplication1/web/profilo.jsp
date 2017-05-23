@@ -26,6 +26,7 @@
                  src="img/tenente_colombo.jpg" width="450" height="325">
         </div>
 
+
         <div class="login_profilo">
             <!--Informazioni personali dell'utente -->
             <form action="Profilo?salva=true" method="post">
@@ -57,12 +58,11 @@
                         </div>
                         <!--Descrizione personale utente-->
                         <div class="textareaa">
-                            <label for="fraseDescrizione">Inserisci la tua biografia:</label>
-                            <input type="textarea" name="fraseDescrizione" placeholder="Inserisci la tua biografia"
+                            <label for="biografia">Inserisci la tua biografia:</label>
+                            <input type="textarea" name="biografia" placeholder="Inserisci la tua biografia"
                                    id="fraseDescrizione"
-                            <c:if test="${not empty fraseDescrizione}">value="${fraseDescrizione}"</c:if>
+                            <c:if test="${not empty biografia}">value="${biografia}"</c:if>
                             <c:if test="${not empty utente.biografia}">value="${utente.biografia}"</c:if>>
-
 
                             </textarea>
                         </div>
@@ -76,7 +76,7 @@
 
                         </div>
                         <div class="textareaa">
-                            <label for="date">Inserisci la tua password:</label>
+                            <label for="password">Inserisci la tua password:</label>
                             <input type="password" name="password" placeholder="Inserisci la tua password"
                                    id="password"
                             <c:if test="${not empty password}">value="${password}"</c:if>
@@ -90,10 +90,24 @@
                     </div>
                     <!--pulsante per l'aggiornamento dei dati-->
                     <div id="aggiorna"> <input type="submit" value="Aggiorna"/> </div>
-
-
-
-                </form>  
+                </form>
+                        
+                <div class="cancellazioneProfilo">
+                    <div class="bottoni">
+                        <form action="Profilo?cancellaProfilo=true" method="post">
+                        <input type="submit" value="Elimina Profilo">
+                    </form>
+                    </div>
+                    <div class="bottoni">
+                        <form action="Profilo?cancellaBacheca=true" method="post">
+                        <input type="submit" value="Elimina Bacheca">
+                    </form>
+                        
+                    </div>
+                    
+                    
+    
+                </div>
             </div>
         <c:if test="${salva != null}"> <h2>conferma dati inviati</h2> </c:if>
     </body>
