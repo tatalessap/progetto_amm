@@ -196,38 +196,13 @@ public class UtentiRegistratiFactory {
             try {
                 
             conn = DriverManager.getConnection(connectionString, "tata", "tata");
-           
-//             //cancello le amicizie con altri utenti
-//            query = " delete from amicizie " + " where utente1 = ? or utente2 = ? ";
-//            stmt = conn.prepareStatement(query);
-//            stmt.setInt(1, utente.getPersonalID());
-//            stmt.setInt(2, utente.getPersonalID());
-//            stmt.executeUpdate();
-//            
-//            //cancello l'utente dai gruppi seguiti
-//            query  = " delete from listaUtentiGroup " + " where utenteGroup = ? ";
-//            stmt = conn.prepareStatement(query);
-//            stmt.setInt(1, utente.getPersonalID());
-//            stmt.executeUpdate();
-//            
-//            
-//            //cancello l'utente dai gruppi 
-//            query  = " delete from gruppi " + " where idUtenteProprietario = ? ";
-//            stmt = conn.prepareStatement(query);
-//            stmt.setInt(1, utente.getPersonalID());
-//            stmt.executeUpdate();
-//            
+                     
             query = " delete from utentiRegistrati " + " where personalID = ? ";
             stmt = conn.prepareStatement(query);
             stmt.setInt(1, utente.getPersonalID());
             stmt.executeUpdate();
             
 
-//            //cancello l'utente dai gruppi 
-//            query  = " delete from gruppi " + " where idUtenteProprietario = ? ";
-//            stmt = conn.prepareStatement(query);
-//            stmt.setInt(1, utente.getPersonalID());
-//            stmt.executeUpdate();
 
             stmt.close();
             conn.close();
@@ -236,6 +211,43 @@ public class UtentiRegistratiFactory {
                 e.printStackTrace();
 
             }
+    }
+    
+    public ArrayList<UtentiRegistrati> listaLatoSx(String nome) {
+        
+        ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+        
+        try {
+
+            Connection conn = DriverManager.getConnection(connectionString, "tata", "tata");
+            String query = "select * from utentiRegistrati where nomeUtente like ? ";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, "%" + nome + "%");
+            ResultSet res = stmt.executeQuery();
+            
+            while (res.next()) {
+
+                UtentiRegistrati current = new UtentiRegistrati();
+                current.setPersonalID(res.getInt("personalID"));
+                current.setNomeUtente(res.getString("nomeUtente"));
+                current.setCognomeUtente(res.getString("cognomeUtente"));
+                current.setPassword(res.getString("password"));
+                current.setDataNascita(res.getString("dataNascita"));
+                current.setBiografia(res.getString("biografia"));
+                current.setUrl(res.getString("url"));
+
+                listaUtenti.add(0, current);
+
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaUtenti;
+    
     }
 
 

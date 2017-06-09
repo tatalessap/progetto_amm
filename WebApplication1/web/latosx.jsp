@@ -7,11 +7,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="latosx">
-   
-    
+  <div id="search">
+            <input id="searchAmico" type="text" placeholder="cerca un altro utente.." onkeyup= resaListaDinamica()>
+            <button id="searchBottone">Cerca</button>
+  </div>
+
      <div id="personeLista">
         <p> Altri utenti: </p>
-        <nav>
+        <nav id="personeListaRicerca">
             <ul>
                 <c:forEach var="listaUt" items="${listaUtenti}">                
                     <li>

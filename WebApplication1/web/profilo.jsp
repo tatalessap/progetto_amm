@@ -11,6 +11,8 @@
         <meta name="author" content="Marta Pibiri">
         <meta name="keywords" content="profilo profilonerdbook nerdbook datiNerdbook">
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/javascript.js"></script>
 
     </head>
     <!--    pagina profilo in cui si inseriscono i dati dell'utente e dove viene reinderizzato in caso non abbia compleato tutti i campi.-->
